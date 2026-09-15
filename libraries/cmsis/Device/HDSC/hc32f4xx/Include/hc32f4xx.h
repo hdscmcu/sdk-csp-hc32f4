@@ -35,6 +35,9 @@ extern "C"
 #if defined(HC32F4A0)
 #include "hc32f4a0.h"
 #include "system_hc32f4a0.h"
+#elif defined(HC32F4A8)
+#include "hc32f4a8.h"
+#include "system_hc32f4a8.h"
 #elif defined(HC32F460)
 #include "hc32f460.h"
 #include "system_hc32f460.h"

@@ -14,6 +14,8 @@
 #include <board.h>
 #include <rtthread.h>
 
+#define BSP_USING_GPIO
+
 #ifdef __cplusplus
 extern "C" {
 #endif
