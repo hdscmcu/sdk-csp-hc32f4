@@ -6,12 +6,9 @@
 ;  Change Logs:
 ;  Date             Author          Notes
 ;  2023-05-31       CDT             First version
-;  xxxx-xx-xx       CDT             Remove code of stack initialization
-;                                   Code fix of ClrSramSR
-;                                   Call static constructors for C++
 ; endverbatim
 ; *****************************************************************************
-; * Copyright (C) 2022-2024, Xiaohua Semiconductor Co., Ltd. All rights reserved.
+; * Copyright (C) 2022-2023, Xiaohua Semiconductor Co., Ltd. All rights reserved.
 ; *
 ; * This software component is licensed by XHSC under BSD 3-Clause license
 ; * (the "License"); You may not use this file except in compliance with the
@@ -36,7 +33,7 @@
 ;  <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ;</h>
 */
-                .equ        Stack_Size, 0x00000C00
+                .equ        Stack_Size, 0x00000800
 
                 .section    .stack
                 .align      3
@@ -54,7 +51,7 @@ __StackTop:
 ;  <o> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ;</h>
 */
-                .equ        Heap_Size, 0x00000400
+                .equ        Heap_Size, 0x00000000
 
                 .if         Heap_Size != 0                     /* Heap is provided */
                 .section    .heap
@@ -254,9 +251,20 @@ Reset_Handler:
  *
  * All addresses must be aligned to 4 bytes boundary.
  */
+StackInit:
+                ldr         r1, =__StackLimit
+                ldr         r2, =__StackTop
+
+                movs        r0, 0
+StackInitLoop:
+                cmp         r1, r2
+                itt         lt
+                strlt       r0, [r1], #4
+                blt         StackInitLoop
+
 ClrSramSR:
                 ldr         r0, =0x40050810
-                ldr         r1, =0x1F8
+                movw        r1, #0x1FF
                 str         r1, [r0]
 
                 /* Copy data from read only memory to RAM. */
@@ -323,12 +331,10 @@ ClearLoop1:
                 strlt       r0, [r1], #4
                 blt         ClearLoop1
 
-                /* Call static constructors */
-                bl          __libc_init_array
                 /* Call the clock system initialization function. */
                 bl          SystemInit
                 /* Call the application's entry point. */
-                bl          main
+                bl          entry
                 bx          lr
                 .size       Reset_Handler, . - Reset_Handler
 /*

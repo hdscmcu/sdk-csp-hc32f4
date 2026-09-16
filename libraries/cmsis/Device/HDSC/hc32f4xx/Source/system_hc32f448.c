@@ -7,10 +7,9 @@
    Change Logs:
    Date             Author          Notes
    2023-05-31       CDT             First version
-   xxxx-xx-xx       CDT             Modify GPIO configuration value of QSPI
  @endverbatim
  *******************************************************************************
- * Copyright (C) 2022-2024, Xiaohua Semiconductor Co., Ltd. All rights reserved.
+ * Copyright (C) 2022-2023, Xiaohua Semiconductor Co., Ltd. All rights reserved.
  *
  * This software component is licensed by XHSC under BSD 3-Clause license
  * (the "License"); You may not use this file except in compliance with the
@@ -168,12 +167,12 @@ __WEAKDEF void SystemInit_QspiMem(void)
     /* QSPI configure */
     CM_GPIO->PWPR = 0xA501U;
     /* High driver */
-    CM_GPIO->PCRC7  = 0x0020U;
-    CM_GPIO->PCRB14 = 0x0020U;
-    CM_GPIO->PCRB13 = 0x0020U;
-    CM_GPIO->PCRD9  = 0x0020U;
-    CM_GPIO->PCRD10 = 0x0020U;
-    CM_GPIO->PCRD11 = 0x0020U;
+    CM_GPIO->PCRC7  = 0x0120U;
+    CM_GPIO->PCRB14 = 0x0120U;
+    CM_GPIO->PCRB13 = 0x0120U;
+    CM_GPIO->PCRD9  = 0x0120U;
+    CM_GPIO->PCRD10 = 0x0120U;
+    CM_GPIO->PCRD11 = 0x0120U;
     /* Set function */
     CM_GPIO->PFSRC7  = 0x07U;
     CM_GPIO->PFSRB14 = 0x07U;

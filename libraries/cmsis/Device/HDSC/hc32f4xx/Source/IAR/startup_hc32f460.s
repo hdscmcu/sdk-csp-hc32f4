@@ -6,10 +6,10 @@
 ;  Change Logs:
 ;  Date             Author          Notes
 ;  2022-03-31       CDT             First version
-;  xxxx-xx-xx       CDT             Added code of clear SRAMC status flags
+;  2024-11-08       CDT             Added code of clear SRAMC status flags
 ; endverbatim
 ; *****************************************************************************
-; * Copyright (C) 2022-2024, Xiaohua Semiconductor Co., Ltd. All rights reserved.
+; * Copyright (C) 2022-2025, Xiaohua Semiconductor Co., Ltd. All rights reserved.
 ; *
 ; * This software component is licensed by XHSC under BSD 3-Clause license
 ; * (the "License"); You may not use this file except in compliance with the

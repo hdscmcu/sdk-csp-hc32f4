@@ -109,7 +109,7 @@ static rt_uint32_t _crc_update(struct hwcrypto_crc *ctx, const rt_uint8_t *in, r
         LOG_D("CRC_Init.");
         rt_memcpy(&crc_cfgbk, &ctx->crc_cfg, sizeof(struct hwcrypto_crc_cfg));
     }
-#if defined(HC32F4A8)
+#if defined(HC32F460) || defined(HC32F4A0) || defined(HC32F4A2) || defined(HC32F4A8) || defined(HC32F467)
     if (16U == ctx->crc_cfg.width)
     {
         (void)CRC_CRC16_AccumulateData(CRC_DATA_WIDTH_8BIT, in, length, (uint16_t *)&result);

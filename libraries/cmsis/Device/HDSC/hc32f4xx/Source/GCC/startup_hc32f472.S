@@ -33,7 +33,7 @@
 ;  <o> Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ;</h>
 */
-                .equ        Stack_Size, 0x00000C00
+                .equ        Stack_Size, 0x00000800
 
                 .section    .stack
                 .align      3
@@ -51,7 +51,7 @@ __StackTop:
 ;  <o> Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 ;</h>
 */
-                .equ        Heap_Size, 0x00000400
+                .equ        Heap_Size, 0x00000000
 
                 .if         Heap_Size != 0                     /* Heap is provided */
                 .section    .heap
@@ -386,7 +386,7 @@ ClearLoop1:
                 /* Call the clock system initialization function. */
                 bl          SystemInit
                 /* Call the application's entry point. */
-                bl          main
+                bl          entry
                 bx          lr
                 .size       Reset_Handler, . - Reset_Handler
 /*

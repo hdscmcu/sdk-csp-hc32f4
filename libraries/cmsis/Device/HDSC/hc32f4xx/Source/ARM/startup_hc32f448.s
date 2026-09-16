@@ -1,28 +1,23 @@
-;/**
-; ******************************************************************************
-;  @file  startup_hc32f448.s
-;  @brief Startup for MDK.
-; verbatim
-;  Change Logs:
-;  Date             Author          Notes
-;  2023-05-31       CDT             First version
-;  xxxx-xx-xx       CDT             Added code of clear SRAMC status flags
-; endverbatim
-; *****************************************************************************
-; * Copyright (C) 2022-2024, Xiaohua Semiconductor Co., Ltd. All rights reserved.
+;/*****************************************************************************
+; * Copyright (C) 2022-2023, Xiaohua Semiconductor Co., Ltd. All rights reserved.
 ; *
 ; * This software component is licensed by XHSC under BSD 3-Clause license
 ; * (the "License"); You may not use this file except in compliance with the
 ; * License. You may obtain a copy of the License at:
 ; *                    opensource.org/licenses/BSD-3-Clause
 ; *
-; ******************************************************************************
 ; */
+;/****************************************************************************/
+;/*  Startup for MDK                                                         */
+;/*  Version     V1.0                                                        */
+;/*  Date        2023-05-31                                                  */
+;/*  Target-mcu  HC32F448                                                    */
+;/****************************************************************************/
 
 ; Stack Configuration
 ; Stack Size (in Bytes) <0x0-0xFFFFFFFF:8>
 
-Stack_Size      EQU     0x00000C00
+Stack_Size      EQU     0x00000800
 
                 AREA    STACK, NOINIT, READWRITE, ALIGN=3
 Stack_Mem       SPACE   Stack_Size
@@ -32,7 +27,7 @@ __initial_sp
 ; Heap Configuration
 ;  Heap Size (in Bytes) <0x0-0xFFFFFFFF:8>
 
-Heap_Size       EQU     0x00000400
+Heap_Size       EQU     0x00000000
 
                 AREA    HEAP, NOINIT, READWRITE, ALIGN=3
 __heap_base
@@ -212,10 +207,6 @@ Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
                 IMPORT  SystemInit
                 IMPORT  __main
-;ClrSramSR
-                LDR     R0, =0x40050810
-                LDR     R1, =0x1F8
-                STR     R1, [R0]
 
                 LDR     R0, =SystemInit
                 BLX     R0

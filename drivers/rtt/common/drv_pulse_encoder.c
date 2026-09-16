@@ -16,7 +16,7 @@
 #include "drv_irq.h"
 
 // #define DRV_DEBUG
-#define LOG_TAG             "drv_pulse_encoder"
+#define LOG_TAG "drv_pulse_encoder"
 #include <drv_log.h>
 
 #if defined(BSP_USING_TMRA_PULSE_ENCODER)
@@ -25,7 +25,7 @@
     !defined(BSP_USING_PULSE_ENCODER_TMRA_4) && !defined(BSP_USING_PULSE_ENCODER_TMRA_5) && !defined(BSP_USING_PULSE_ENCODER_TMRA_6) && \
     !defined(BSP_USING_PULSE_ENCODER_TMRA_7) && !defined(BSP_USING_PULSE_ENCODER_TMRA_8) && !defined(BSP_USING_PULSE_ENCODER_TMRA_9) && \
     !defined(BSP_USING_PULSE_ENCODER_TMRA_10) && !defined(BSP_USING_PULSE_ENCODER_TMRA_11) && !defined(BSP_USING_PULSE_ENCODER_TMRA_12)
-    #error "Please define at least one BSP_USING_PULSE_ENCODERx"
+#error "Please define at least one BSP_USING_PULSE_ENCODERx"
     /* this driver can be disabled at menuconfig -> RT-Thread Components -> Device Drivers */
 #endif
 
@@ -95,8 +95,7 @@ struct hc32_pulse_encoder_tmra_device
     char *name;
 };
 
-static struct hc32_pulse_encoder_tmra_device hc32_pulse_encoder_tmra_obj[] =
-{
+static struct hc32_pulse_encoder_tmra_device hc32_pulse_encoder_tmra_obj[] = {
 #ifdef BSP_USING_PULSE_ENCODER_TMRA_1
     PULSE_ENCODER_TMRA_1_CONFIG,
 #endif
@@ -146,13 +145,16 @@ static void TMRA_1_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_1_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_1_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMRA_1_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_1_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_1_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_1_Udf_callback();
     }
 }
@@ -170,13 +172,16 @@ static void TMRA_2_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_2_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_2_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMRA_2_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_2_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_2_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_2_Udf_callback();
     }
 }
@@ -194,13 +199,16 @@ static void TMRA_3_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_3_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_3_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMRA_3_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_3_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_3_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_3_Udf_callback();
     }
 }
@@ -218,13 +226,16 @@ static void TMRA_4_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_4_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_4_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMRA_4_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_4_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_4_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_4_Udf_callback();
     }
 }
@@ -242,13 +253,16 @@ static void TMRA_5_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_5_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_5_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMRA_5_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_5_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_5_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_5_Udf_callback();
     }
 }
@@ -266,13 +280,16 @@ static void TMRA_6_Udf_callback(void)
     TMRA_ClearStatus(hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_6_INDEX].tmr_handler, TMRA_FLAG_UDF);
     hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_6_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472)
 void TMRA_6_Ovf_Udf_Handler(void)
 {
     CM_TMRA_TypeDef *tmr_handler = hc32_pulse_encoder_tmra_obj[PULSE_ENCODER_TMRA_6_INDEX].tmr_handler;
-    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET) {
+    if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_OVF) == SET)
+    {
         TMRA_6_Ovf_callback();
-    } else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET) {
+    }
+    else if (TMRA_GetStatus(tmr_handler, TMRA_FLAG_UDF) == SET)
+    {
         TMRA_6_Udf_callback();
     }
 }
@@ -427,7 +444,7 @@ rt_err_t _tmra_pulse_encoder_init(struct rt_pulse_encoder_device *pulse_encoder)
     (void)TMRA_StructInit(&stcTmraInit);
     /* Initializes position-count unit. */
     stcTmraInit.u8CountSrc = TMRA_CNT_SRC_HW;
-    stcTmraInit.hw_count.u16CountUpCond   = hc32_device->hw_count.u16CountUpCond;
+    stcTmraInit.hw_count.u16CountUpCond = hc32_device->hw_count.u16CountUpCond;
     stcTmraInit.hw_count.u16CountDownCond = hc32_device->hw_count.u16CountDownCond;
     stcTmraInit.u32PeriodValue = hc32_device->u32PeriodValue;
     (void)TMRA_Init(hc32_device->tmr_handler, &stcTmraInit);
@@ -437,22 +454,13 @@ rt_err_t _tmra_pulse_encoder_init(struct rt_pulse_encoder_device *pulse_encoder)
     irq_config.int_src = hc32_device->isr.enIntSrc_Ovf;
     irq_config.irq_prio = hc32_device->isr.u8Int_Prio_Ovf;
     /* register interrupt */
-#if defined (HC32F460) || defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F4A8) || defined (HC32F467)
     hc32_install_irq_handler(&irq_config, hc32_device->isr.Irq_Ovf_Callback, RT_TRUE);
-#elif defined (HC32F448) || defined (HC32F472)
-    hc32_install_independ_irq_handler(&irq_config, RT_TRUE);
-#endif
     /* UDF interrupt configuration */
     irq_config.irq_num = hc32_device->isr.enIRQn_Udf;
     irq_config.int_src = hc32_device->isr.enIntSrc_Udf;
     irq_config.irq_prio = hc32_device->isr.u8Int_Prio_Udf;
     /* register interrupt */
-#if defined (HC32F460) || defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F4A8) || defined (HC32F467)
     hc32_install_irq_handler(&irq_config, hc32_device->isr.Irq_Udf_Callback, RT_TRUE);
-#elif defined (HC32F448) || defined (HC32F472)
-    hc32_install_independ_irq_handler(&irq_config, RT_TRUE);
-#endif
-
     /* Enable the specified interrupts of TimerA. */
     TMRA_IntCmd(hc32_device->tmr_handler, TMRA_INT_OVF | TMRA_INT_UDF, ENABLE);
 
@@ -513,8 +521,7 @@ rt_err_t _tmra_pulse_encoder_control(struct rt_pulse_encoder_device *pulse_encod
     return result;
 }
 
-static const struct rt_pulse_encoder_ops _tmra_ops =
-{
+static const struct rt_pulse_encoder_ops _tmra_ops = {
     .init = _tmra_pulse_encoder_init,
     .get_count = _tmra_pulse_encoder_get_count,
     .clear_count = _tmra_pulse_encoder_clear_count,
@@ -529,7 +536,7 @@ static const struct rt_pulse_encoder_ops _tmra_ops =
     !defined(BSP_USING_PULSE_ENCODER_TMR6_4) && !defined(BSP_USING_PULSE_ENCODER_TMR6_5) && !defined(BSP_USING_PULSE_ENCODER_TMR6_6) && \
     !defined(BSP_USING_PULSE_ENCODER_TMR6_7) && !defined(BSP_USING_PULSE_ENCODER_TMR6_8) && !defined(BSP_USING_PULSE_ENCODER_TMR6_9) && \
     !defined(BSP_USING_PULSE_ENCODER_TMR6_10)
-    #error "Please define at least one BSP_USING_PULSE_ENCODERx"
+#error "Please define at least one BSP_USING_PULSE_ENCODERx"
     /* this driver can be disabled at menuconfig -> RT-Thread Components -> Device Drivers */
 #endif
 
@@ -593,8 +600,7 @@ struct hc32_pulse_encoder_tmr6_device
     char *name;
 };
 
-static struct hc32_pulse_encoder_tmr6_device hc32_pulse_encoder_tmr6_obj[] =
-{
+static struct hc32_pulse_encoder_tmr6_device hc32_pulse_encoder_tmr6_obj[] = {
 #ifdef BSP_USING_PULSE_ENCODER_TMR6_1
     PULSE_ENCODER_TMR6_1_CONFIG,
 #endif
@@ -638,13 +644,16 @@ void TMR6_1_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_1_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_1_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMR6_1_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_1_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_1_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_1_Udf_callback();
     }
 }
@@ -662,13 +671,16 @@ void TMR6_2_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_2_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_2_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F448) || defined (HC32F472)
+#if defined(HC32F448) || defined(HC32F472) || defined(HC32F334)
 void TMR6_2_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_2_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_2_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_2_Udf_callback();
     }
 }
@@ -686,13 +698,16 @@ void TMR6_3_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_3_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_3_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472) || defined(HC32F334)
 void TMR6_3_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_3_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_3_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_3_Udf_callback();
     }
 }
@@ -710,13 +725,16 @@ void TMR6_4_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_4_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_4_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472) || defined(HC32F334)
 void TMR6_4_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_4_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_4_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_4_Udf_callback();
     }
 }
@@ -734,13 +752,16 @@ void TMR6_5_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_5_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_5_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472) || defined(HC32F334)
 void TMR6_5_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_5_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_5_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_5_Udf_callback();
     }
 }
@@ -758,13 +779,16 @@ void TMR6_6_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_6_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_6_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472) || defined(HC32F334)
 void TMR6_6_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_6_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_6_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_6_Udf_callback();
     }
 }
@@ -782,13 +806,16 @@ void TMR6_7_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_7_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_7_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472)
 void TMR6_7_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_7_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_7_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_7_Udf_callback();
     }
 }
@@ -806,13 +833,16 @@ void TMR6_8_Udf_callback(void)
     TMR6_ClearStatus(hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_8_INDEX].tmr_handler, TMR6_FLAG_UDF);
     hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_8_INDEX].Over_Under_Flowcount--;
 }
-#if defined (HC32F472)
+#if defined(HC32F472)
 void TMR6_8_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_8_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_8_Ovf_callback();
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_8_Udf_callback();
     }
 }
@@ -820,14 +850,17 @@ void TMR6_8_Ovf_Udf_Handler(void)
 #endif
 
 #ifdef BSP_USING_PULSE_ENCODER_TMR6_9
-#if defined (HC32F472)
+#if defined(HC32F472)
 void TMR6_9_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_9_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_ClearStatus(tmr_handler, TMR6_FLAG_OVF);
         hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_9_INDEX].Over_Under_Flowcount++;
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_ClearStatus(tmr_handler, TMR6_FLAG_UDF);
         hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_9_INDEX].Over_Under_Flowcount--;
     }
@@ -836,14 +869,17 @@ void TMR6_9_Ovf_Udf_Handler(void)
 #endif
 
 #ifdef BSP_USING_PULSE_ENCODER_TMR6_10
-#if defined (HC32F472)
+#if defined(HC32F472)
 void TMR6_10_Ovf_Udf_Handler(void)
 {
     CM_TMR6_TypeDef *tmr_handler = hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_10_INDEX].tmr_handler;
-    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET) {
+    if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_OVF) == SET)
+    {
         TMR6_ClearStatus(tmr_handler, TMR6_FLAG_OVF);
         hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_10_INDEX].Over_Under_Flowcount++;
-    } else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET) {
+    }
+    else if (TMR6_GetStatus(tmr_handler, TMR6_FLAG_UDF) == SET)
+    {
         TMR6_ClearStatus(tmr_handler, TMR6_FLAG_UDF);
         hc32_pulse_encoder_tmr6_obj[PULSE_ENCODER_TMR6_10_INDEX].Over_Under_Flowcount--;
     }
@@ -905,7 +941,7 @@ rt_err_t _tmr6_pulse_encoder_init(struct rt_pulse_encoder_device *pulse_encoder)
     (void)TMR6_StructInit(&stcTmr6Init);
     /* Initializes position-count unit. */
     stcTmr6Init.u8CountSrc = TMR6_CNT_SRC_HW;
-    stcTmr6Init.hw_count.u32CountUpCond   = hc32_device->hw_count.u32CountUpCond;
+    stcTmr6Init.hw_count.u32CountUpCond = hc32_device->hw_count.u32CountUpCond;
     stcTmr6Init.hw_count.u32CountDownCond = hc32_device->hw_count.u32CountDownCond;
     stcTmr6Init.u32PeriodValue = hc32_device->u32PeriodValue;
     (void)TMR6_Init(hc32_device->tmr_handler, &stcTmr6Init);
@@ -915,22 +951,13 @@ rt_err_t _tmr6_pulse_encoder_init(struct rt_pulse_encoder_device *pulse_encoder)
     irq_config.int_src = hc32_device->isr.enIntSrc_Ovf;
     irq_config.irq_prio = hc32_device->isr.u8Int_Prio_Ovf;
     /* register interrupt */
-#if defined (HC32F460) || defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F4A8) || defined (HC32F467)
     hc32_install_irq_handler(&irq_config, hc32_device->isr.Irq_Ovf_Callback, RT_TRUE);
-#elif defined (HC32F448) || defined (HC32F472)
-    hc32_install_independ_irq_handler(&irq_config, RT_TRUE);
-#endif
     /* UDF interrupt configuration */
     irq_config.irq_num = hc32_device->isr.enIRQn_Udf;
     irq_config.int_src = hc32_device->isr.enIntSrc_Udf;
     irq_config.irq_prio = hc32_device->isr.u8Int_Prio_Udf;
     /* register interrupt */
-#if defined (HC32F460) || defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F4A8) || defined (HC32F467)
     hc32_install_irq_handler(&irq_config, hc32_device->isr.Irq_Udf_Callback, RT_TRUE);
-#elif defined (HC32F448) || defined (HC32F472)
-    hc32_install_independ_irq_handler(&irq_config, RT_TRUE);
-#endif
-
     /* Enable the specified interrupts of Timer6. */
     TMR6_IntCmd(hc32_device->tmr_handler, TMR6_INT_OVF | TMR6_INT_UDF, ENABLE);
 
@@ -991,8 +1018,7 @@ rt_err_t _tmr6_pulse_encoder_control(struct rt_pulse_encoder_device *pulse_encod
     return result;
 }
 
-static const struct rt_pulse_encoder_ops _tmr6_ops =
-{
+static const struct rt_pulse_encoder_ops _tmr6_ops = {
     .init = _tmr6_pulse_encoder_init,
     .get_count = _tmr6_pulse_encoder_get_count,
     .clear_count = _tmr6_pulse_encoder_clear_count,
