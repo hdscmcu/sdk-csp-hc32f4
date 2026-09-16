@@ -2218,3 +2218,509 @@ series:
         source_files:
         - drivers\rtt\common
         - drivers\rtt\F448
+  - sub_series_name: HC32F4A2
+    cpu_info:
+      fpu: '1'
+      mpu: '1'
+      max_clock: '240000000'
+    source_files:
+      file:
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\hc32f4a2.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\hc32f4xx.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\system_hc32f4a2.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Source\system_hc32f4a2.c
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Source\GCC\startup_hc32f4a2.S
+      - libraries\cmsis\Include
+      - libraries\hc32f4a2_ddl\hc32_ll_driver\inc
+      - libraries\hc32f4a2_ddl\hc32_ll_driver\src
+    chips:
+    - chip_name: HC32F4A2TIHB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F4A2SITB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F4A2SIHB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F4A2RITB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F4A2PITB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F4A2PIHB
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00200000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F4A2xI\link.ld
+          marco:
+          - HC32F4A2xI
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART1
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PH15
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PH15 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如:PH15
+      rx_pin:
+        default_value: PH13
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PH13 '
+        prompt_message_zh: 设置控制台设备的数据接收引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如:PH13
+    docs:
+    - file: documents\RM_HC32F4A2_Rev1.3.pdf
+      title: HC32F4A2 Reference Manual
+    svd:
+      file: debug\svd\HC32F4A2.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_HC32F4A2SI
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F4A2
+        source_files:
+        - drivers\baremetal\F4A2
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_HC32F4A2SI
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F4A2
+        source_files:
+        - drivers\nano\F4A2
+      rtt:
+        function_map:
+          rt_hw_board_init: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_HC32F4A2SI
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F4A2
+        source_files:
+        - drivers\rtt\common
+        - drivers\rtt\F4A2
+  - sub_series_name: HC32F467
+    cpu_info:
+      fpu: '1'
+      mpu: '1'
+      max_clock: '240000000'
+    source_files:
+      file:
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\hc32f467.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\hc32f4xx.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Include\system_hc32f467.h
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Source\system_hc32f467.c
+      - libraries\cmsis\Device\HDSC\hc32f4xx\Source\GCC\startup_hc32f467.S
+      - libraries\cmsis\Include
+      - libraries\hc32f467_ddl\hc32_ll_driver\inc
+      - libraries\hc32f467_ddl\hc32_ll_driver\src
+    chips:
+    - chip_name: HC32F467RGTI
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00100000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F467xG\link.ld
+          marco:
+          - HC32F467xG
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F467PGTI
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00100000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F467xG\link.ld
+          marco:
+          - HC32F467xG
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    - chip_name: HC32F467KGTI
+      peripheral: {}
+      memory:
+      - id: IROM1
+        start: '0x0'
+        size: '0x00100000'
+        default: '1'
+      - id: IROM2
+        start: '0x03000000'
+        size: '0x1800'
+        default: '0'
+      - id: IRAM1
+        start: '0x1FFE0000'
+        size: '0x80000'
+        init: '0'
+        default: '1'
+      - id: IRAM2
+        start: '0x200F0000'
+        size: '0x1000'
+        init: '0'
+        default: '0'
+      compiler:
+        gcc:
+          entry_point: entry
+          link_script: linkscripts\HC32F467xG\link.ld
+          marco:
+          - HC32F467xG
+          files: []
+        armcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+        iarcc:
+          entry_point: none
+          link_script: none
+          marco: []
+          files: []
+    ui:
+      uart:
+        default_value: UART7
+        prompt_message_en: select one uart as console output interface
+        prompt_message_zh: 选择一个串口作为控制台信息输出接口
+      tx_pin:
+        default_value: PD07
+        prompt_message_en: 'set the tx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PD07 '
+        prompt_message_zh: 设置控制台设备的数据发送引脚的名称, 名称应该具有以下格式“P+[端口名称][端口编号]”, 比如:PD07
+      rx_pin:
+        default_value: PC11
+        prompt_message_en: 'set the rx pin name of the console device interface, the
+          value should be with a format"P+[port name][pin number]", eg. PC11 '
+        prompt_message_zh: 设置控制台设备的数据接收引脚的名称，名称应该具有以下格式“P+[端口名称][端口编号]”, 比如:PC11
+    docs:
+    - file: documents\RM_HC32F467_Rev1.03.pdf
+      title: HC32F467 Reference Manual
+    svd:
+      file: debug\svd\HC32F467.svd
+    project_type:
+      bare_metal:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          sysTick: none
+        marco:
+        - SOC_HC32F467RG
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F467
+        source_files:
+        - drivers\baremetal\F467
+      rtt_nano:
+        function_map:
+          clk_init: none
+          uart_init: none
+          putc: none
+          getc: none
+          sysTick: none
+          heap_init: none
+        marco:
+        - SOC_HC32F467RG
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F467
+        source_files:
+        - drivers\nano\F467
+      rtt:
+        function_map:
+          rt_hw_board_init: none
+          rt_hw_serial_register: none
+          rt_hw_pin_register: none
+          heap_init: none
+        marco:
+        - SOC_HC32F467RG
+        - SOC_FAMILY_HC32
+        - SOC_SERIES_HC32F4
+        - USE_DDL_DRIVER
+        - HC32F467
+        source_files:
+        - drivers\rtt\common
+        - drivers\rtt\F467

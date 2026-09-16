@@ -36,7 +36,7 @@ static dac_device _g_dac_dev_array[] =
 #ifdef BSP_USING_DAC1
     {
         {0},
-#if defined (HC32F4A0) || defined (HC32F472) || defined (HC32F4A8)
+#if defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F467) || defined (HC32F472) || defined (HC32F4A8)
         CM_DAC1,
 #elif defined (HC32F448)
         CM_DAC,
@@ -147,7 +147,7 @@ static const struct rt_dac_ops g_dac_ops =
 static void _dac_clock_enable(void)
 {
 #if defined(BSP_USING_DAC1)
-#if defined (HC32F4A0) || defined (HC32F472) || defined (HC32F4A8)
+#if defined (HC32F4A0) || defined (HC32F4A2) || defined (HC32F467) || defined (HC32F472) || defined (HC32F4A8)
     FCG_Fcg3PeriphClockCmd(FCG3_PERIPH_DAC1, ENABLE);
 #elif defined (HC32F448)
     FCG_Fcg3PeriphClockCmd(FCG3_PERIPH_DAC, ENABLE);
